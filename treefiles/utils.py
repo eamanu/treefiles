@@ -1,6 +1,3 @@
-from collections import OrderedDict as OD
-
-
 def get_simulate_folder(fmt):
     """Retornar un arbol de directorios en formato de tuple necesarios
     para imprimir como tuplas, o formato dict para imprimir como ascii.
