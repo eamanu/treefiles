@@ -1,143 +1,36 @@
-"""
-Implementar la función get_directories_structure que
-es llamada en  `Tree.get_directories_structure()`
-
-Esto se hace para simplemente "simular" un escaneo del
-directorio y ahorrarnos trabajo.
-
-Tener cuidado que dependiendo de si queremos mostrar en formato
-unix o formato ascii la estructura cambia.
-
-Guiarse de los ejemplos que muestran los modulos que se utilizan aca:
-
-asciitree: https://pypi.org/project/asciitree/
-
-treeformat: https://github.com/jml/tree-format
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-(Ayuda? ver la historia de git siempre es bueno ;) github:@eamanu)
-"""
-
+def get_simulate_folder(fmt):
+    """Retornar un arbol de directorios en formato de tuple necesarios
+    para imprimir como tuplas, o formato dict para imprimir como ascii.
+    """
+    path_tree_ascii = {
+    'home': {
+        'eamanu': {
+            'Documents': {
+                'ejemplo': {
+                    'ejemplo.py':{},
+                    'ejemplo2.py': {}
+                    },
+                 'carperta_vacia': {}
+                },
+            'Videos': {},
+            'Pictures': {}
+            }
+        }
+    }
+
+    path_tree_unix = (
+        'home', [
+            ('Documents', [
+                ('ejemplo', [
+                    ('ejemplo.py', []),
+                    ('ejemplo2.py', [])
+                ]),
+                ('carperta_vacia', []),
+            ]),
+            ('Videos', []),
+            ('Pictures', [])
+            ])
+
+    if fmt == 'unix':
+        return path_tree_unix
+    return path_tree_ascii
