@@ -10,4 +10,12 @@ def run(path, fmt):
 
 
 if __name__ == '__main__':
-    # implement this
+    parser = argparse.ArgumentParser(description='Pretty tree files')
+    parser.add_argument('folder', metavar='P', type=str,
+                    help='Path to the folder to show the tree directory')
+    parser.add_argument('--format', '-f', default='unix',
+                        help='format of the tree (default: unix)')
+
+    args = parser.parse_args()
+    if args.folder:
+        run(args.folder, args.format)
