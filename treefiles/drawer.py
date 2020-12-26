@@ -55,8 +55,14 @@ class Drawer:
     Se podría, si se quiere hacer algo mas complejo pero, será suficiente
     por ahora check si es tuple o dict.
     """
-    def __init_(self.directories, fmt: str):
-        pass
+    def __init__(self, directories, fmt: str):
+        self.fmt = self._is_fmt_correct(fmt)
+        self.directories = self._check_directories_and_format(directories)
+
+    def _is_fmt_correct(self, fmt):
+        if fmt in ('unix', 'ascii'):
+            return fmt
+        raise NotImplementedError
 
     def _check_directories_and_format(self, directories):
         """Check si el directories tiene format correcto.
@@ -69,16 +75,20 @@ class Drawer:
         Si no se cumplen ninguna de las condiciones se lanza una exception
         BadFromatDirectories
         """
-        if self fmt == 'unix' and isinstance(directories, tuple):
+        if self.fmt == 'unix' and isinstance(directories, tuple):
             return directories
+        elif self.fmt == 'ascii' and isinstance(directories, dict):
+            return directories
+        else:
+            raise BadFormatDirectories
 
     def print_tree(self):
-        if self.fmt = 'unix':
-            format_tree(
-                self.directories, format_node=itemgetter(0), get_children=itemgetter(1))
-        elif self.fmt == 'ascii'
+        if self.fmt == 'unix':
+            print(format_tree(
+                self.directories, format_node=itemgetter(0), get_children=itemgetter(1)))
+        elif self.fmt == 'ascii':
             tr = LeftAligned()
-            tr(self.directories)
-        else
+            print(tr(self.directories))
+        else:
             raise NotImplementedError
 
